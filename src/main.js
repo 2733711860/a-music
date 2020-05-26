@@ -11,6 +11,8 @@ import "@/components/Vant";
 // rem
 import "amfe-flexible";
 
+import './assets/Iconfont/css/iconfont.css'
+
 // 接口请求
 import {post,get,patch,put} from './api/http.js'
 import api from './api'

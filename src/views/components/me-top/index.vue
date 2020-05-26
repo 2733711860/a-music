@@ -1,12 +1,27 @@
 <template>
 	<div class="me_top">
 		<van-icon name="arrow-left" color="hsla(0,0%,100%,.7)" />
-		<div>播放器</div>
+		<div>{{title}}</div>
 		<van-icon name="search" color="hsla(0,0%,100%,.7)" />
 	</div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+export default {
+	data () {
+		return {
+		}
+	},
+	
+	computed: {
+  	...mapGetters(['currentMusic']),
+  	
+  	title () {
+  		return this.currentMusic ? this.currentMusic.name : '播放器'
+  	}
+  }
+}
 </script>
 
 <style scoped="scoped">

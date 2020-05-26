@@ -1,36 +1,40 @@
 <template>
-  <!--进度条拖动-->
-  <div ref="mmProgress" class="mmProgress" @click="barClick">
-    <div class="mmProgress-bar"></div>
-    <div ref="mmPercentProgress" class="mmProgress-outer"></div>
-    <div ref="mmProgressInner" class="mmProgress-inner">
-      <div
-        class="mmProgress-dot"
-        @mousedown="barDown"
-        @touchstart.prevent="barDown"
-      ></div>
-    </div>
-  </div>
+	<div class="musci_progre">
+		<div v-if="currentMusic.id" class="progress_time">{{ music.currentTime | format }}</div>
+		<!--进度条拖动-->
+	  <div ref="mmProgress" class="mmProgress" @click="barClick">
+	    <div class="mmProgress-bar"></div>
+	    <div ref="mmPercentProgress" class="mmProgress-outer"></div>
+	    <div ref="mmProgressInner" class="mmProgress-inner">
+	      <div class="mmProgress-dot" @mousedown="barDown" @touchstart.prevent="barDown"></div>
+	    </div>
+	  </div>
+		<div v-if="currentMusic.id" class="progress_time">{{ currentMusic.duration % 3600 | format }}</div>
+	</div>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { format } from '@/utils/util.js'
 const dotWidth = 10
 export default {
-  name: 'MmProgress',
   computed: {
 		...mapGetters([
 			'currentMusic', // 当前音乐播放对象
-			'currentTime',
-			'currentProgress',
-			'audioEle'
+			'music'
 		]),
 
 		percent() { // 进度条进度百分比
       const duration = this.currentMusic.duration
-      return this.currentTime && duration ? this.currentTime / duration : 0
+      return this.music.currentTime && duration ? this.music.currentTime / duration : 0
     },
 	},
+	
+	filters: {
+    // 时间格式化
+    format
+  },
+  
   data() {
     return {
       move: {
@@ -40,6 +44,7 @@ export default {
       }
     }
   },
+  
   watch: {
     percent(newPercent) {
       if (newPercent >= 0 && !this.move.status) {
@@ -70,19 +75,19 @@ export default {
   methods: {
     // 添加绑定事件
     bindEvents() {
-      document.addEventListener('mousemove', this.barMove)
-      document.addEventListener('mouseup', this.barUp)
+      document.addEventListener('mousemove', this.barMove, { passive: false })
+      document.addEventListener('mouseup', this.barUp, { passive: false })
 
-      document.addEventListener('touchmove', this.barMove)
-      document.addEventListener('touchend', this.barUp)
+      document.addEventListener('touchmove', this.barMove, { passive: false })
+      document.addEventListener('touchend', this.barUp, { passive: false })
     },
     // 移除绑定事件
     unbindEvents() {
-      document.removeEventListener('mousemove', this.barMove)
-      document.removeEventListener('mouseup', this.barUp)
+      document.removeEventListener('mousemove', this.barMove, { passive: false })
+      document.removeEventListener('mouseup', this.barUp, { passive: false })
 
-      document.removeEventListener('touchmove', this.barMove)
-      document.removeEventListener('touchend', this.barUp)
+      document.removeEventListener('touchmove', this.barMove, { passive: false })
+      document.removeEventListener('touchend', this.barUp, { passive: false })
     },
     // 点击事件
     barClick(e) {
@@ -128,19 +133,23 @@ export default {
     commitPercent() {
       let lineWidth = this.$refs.mmProgress.clientWidth - dotWidth
       let percent = this.$refs.mmProgressInner.clientWidth / lineWidth
-      this.audioEle.currentTime = this.currentMusic.duration * percent
+      this.music.audioEle.currentTime = this.currentMusic.duration * percent
     }
   }
 }
 </script>
 
 <style lang="less">
+.musci_progre{
+	display: flex;
+}
 .mmProgress {
   position: relative;
   padding: 5px;
   user-select: none;
   cursor: pointer;
   overflow: hidden;
+  flex: 1;
   .mmProgress-bar {
     height: 2px;
     width: 100%;
@@ -148,23 +157,23 @@ export default {
   }
   .mmProgress-outer {
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
     left: 5px;
     display: inline-block;
     width: 0;
     height: 2px;
-    margin-top: -1px;
+    /*margin-top: -1px;*/
     background: rgba(255, 255, 255, 0.2);
   }
   .mmProgress-inner {
     position: absolute;
-    top: 50%;
+    /*top: 50%;*/
     left: 5px;
     display: inline-block;
     width: 0;
     height: 2px;
-    margin-top: -1px;
-    background: #1E90FF;
+    margin-top: -2px;
+    background: rgba(255, 255, 255, 0.9);
     .mmProgress-dot {
       position: absolute;
       top: 50%;
@@ -172,9 +181,12 @@ export default {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: #1E90FF;
+      background-color: rgba(255, 255, 255, 1);
       transform: translateY(-50%);
     }
   }
+}
+.progress_time{
+	font-size: 12px;
 }
 </style>

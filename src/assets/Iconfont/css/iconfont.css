@@ -1,0 +1,93 @@
+@font-face {font-family: "iconfont";
+  src: url('../font/iconfont.eot?t=1590416686761'); /* IE9 */
+  src: url('../font/iconfont.eot?t=1590416686761#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+  url('iconfont.woff?t=1590416686761') format('woff'),
+  url('../font/iconfont.ttf?t=1590416686761') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../font/iconfont.svg?t=1590416686761#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconxihuan:before {
+  content: "\e63b";
+}
+
+.iconjinrituijian:before { /*每日推荐*/
+  content: "\e65b";
+}
+
+.iconpaixingbang:before { /*排行榜*/
+  content: "\e6c5";
+}
+
+.icondkw_xiaoxi:before {
+  content: "\e606";
+}
+
+.iconxihuan1:before {
+  content: "\e76a";
+}
+
+.icongeshou:before { /*歌手*/
+  content: "\e605";
+}
+
+.iconhuanfu:before { /*换肤*/
+  content: "\e617";
+}
+
+.iconshanchu:before { /*删除*/
+  content: "\e852";
+}
+
+.icon2:before {
+  content: "\e623";
+}
+
+.icongengduo:before { /*更多*/
+  content: "\e62f";
+}
+
+.iconxia:before { /*下*/
+  content: "\e725";
+}
+
+.iconyinliang:before { /*音量*/
+  content: "\e662";
+}
+
+.iconxunhuanbofang:before { /*循环播放*/
+  content: "\e66c";
+}
+
+.icondanquxunhuan:before { /*单曲循环*/
+  content: "\e66d";
+}
+
+.iconicon--:before {
+  content: "\e77d";
+}
+
+.iconbofang:before { /*播放*/
+  content: "\e609";
+}
+
+.iconshangyishou:before { /*上一首*/
+  content: "\e603";
+}
+
+.iconxiayishou:before { /*下一首*/
+  content: "\e602";
+}
+
+.iconbofang1:before { /*播放*/
+  content: "\e643";
+}
+

@@ -6,24 +6,20 @@
 		<!--列表-->
 		<router-view class="item_page" wechat-title></router-view>
 		
-		<!--底部-->
-		<me-bottom></me-bottom>
-		
 		<!--背景设置-->
 		<div :class="[{isflur: $route.meta.mask}, 'dd_bg_pic']" :style="{ backgroundImage: picUrl }"></div>
-    <div class="dd_bg_mask" v-if="$route.meta.mask"></div>
+    <div :class="[{isflurk: $route.meta.mask}, 'dd_bg_mask']"></div>
 	</div>
 </template>
 
 <script>
 import meTop from '../components/me-top'
-import meBottom from '../components/me-bottom'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { silencePromise, parseLyric } from '@/utils/util'
 import ddPlayerMusic from './ddPlayer.js'
 export default {
 	components: {
-		meTop, meBottom
+		meTop
 	},
 	
 	data () {
@@ -48,6 +44,10 @@ export default {
     	return this.music.currentTime
     },
     
+    playing() { // 当前播放状态，便于watch监听music里面的playing
+    	return this.music.playing
+    },
+    
     ...mapGetters([ 'music', 'currentMusic'])
 	},
 	
@@ -60,11 +60,14 @@ export default {
       if (newMusic.id === oldMusic.id) {
         return
       }
+      console.log(newMusic)
+      console.log(this.music)
       this.music.audioEle.src = newMusic.url
       // 重置相关参数
       this.music.lyricIndex = 0
       this.music.currentProgress = 0
       this.setMusic(this.music)
+      console.log(this.music)
       silencePromise(this.music.audioEle.play())
       this.$nextTick(() => {
         this._getLyric(newMusic.id)
@@ -183,6 +186,9 @@ export default {
 	}
 	.dd_bg_mask{
 		z-index: -1;
-		background-color: rgba(0, 0, 0, .4);
+		background-color: rgba(0, 0, 0, .3);
+	}
+	.isflurk{
+		background-color: rgba(0, 0, 0, .6);
 	}
 </style>

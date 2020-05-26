@@ -1,5 +1,5 @@
 /*滚动条样式*/
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
 	width: 5px;
 }
 ::-webkit-scrollbar-thumb {
@@ -12,5 +12,5 @@
 }
 ::-webkit-scrollbar-track{
 	background-color: rgba(0, 0, 0, 0.3);
-}
+}*/
 /*滚动条样式结束*/
