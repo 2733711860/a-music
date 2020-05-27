@@ -1,9 +1,9 @@
 <template>
   <div class="app">
-    <transition name="move-fade-top-to-bottom">
+    <!--<transition name="move-fade-top-to-bottom">-->
       <router-view class="app-router-view"></router-view>
-    </transition>
-    
+    <!--</transition>-->
+
     <!--播放器-->
   	<audio ref="ddPlayer"></audio>
   </div>
@@ -18,16 +18,11 @@ export default {
   created() {
   	// 设置audio元素
     this.$nextTick(() => {
-    	this.music.audioEle = this.$refs.ddPlayer // 设置audio元素
-      this.setMusic(this.music)
+    	this.setAudioele(this.$refs.ddPlayer) // 设置audio元素
     })
     this.getSongList()
   },
-  
-  computed: {
-  	...mapGetters(['music'])
-  },
-  
+
   methods: {
   	async getSongList() { // 获取歌曲列表
   		let param = {
@@ -36,12 +31,12 @@ export default {
   		await this.$get(this.$api.top_list, param).then(async data => {
     		if (data.body.code == 200) {
     			data = data.body.playlist.tracks.slice(0,100)
-			  	this.music.playlist = await this._formatSongs(data) // 设置播放列表
-			  	this.setMusic(this.music)
+			  	let playlist = await this._formatSongs(data) // 设置播放列表
+			  	this.setPlaylist(playlist)
 				}
 	    })
   	},
-  	
+
     _formatSongs(list) { // 歌曲数据处理
       let ret = []
       list.forEach(item => {
@@ -52,8 +47,11 @@ export default {
       })
       return ret
     },
-  	
-  	...mapActions(['setMusic'])
+
+  	...mapMutations({
+      setAudioele: 'SET_AUDIOELE'
+    }),
+    ...mapActions(['setPlaylist'])
   }
 }
 </script>

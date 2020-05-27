@@ -5,7 +5,7 @@
 		</div>
 		<div class="bottom_button">
 			<span class="icon iconfont fosz">&#xe603;</span>
-			<span class="icon iconfont foszz" @click="play">{{ music.playing ? '&#xe643;' : '&#xe609;'}}</span>
+			<span class="icon iconfont foszz" @click="play">{{ playing ? '&#xe643;' : '&#xe609;'}}</span>
 			<span class="icon iconfont fosz">&#xe602;</span>
 		</div>
 		<div>
@@ -18,16 +18,18 @@
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
 	computed: {
-		...mapGetters([ 'music' ])
+		...mapGetters([ 'playing' ])
 	},
-	
+
 	methods: {
 		play () { // 播放暂停
-			this.music.playing = !this.music.playing
-			this.setMusic(this.music)
+			this.playing = !this.playing
+			this.setPlaying(this.playing)
 		},
-		
-		...mapActions(['setMusic'])
+
+		...mapMutations({
+      setPlaying: 'SET_PLAYING'
+    })
 	}
 }
 </script>

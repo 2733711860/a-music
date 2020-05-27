@@ -5,12 +5,12 @@
 	  <div ref="musicLyric" class="music-lyric">
 	    <div class="music-lyric-items" :style="lyricTop">
 	      <p v-if="!currentMusic.id">还没有播放音乐哦！</p>
-	      <p v-else-if="music.nolyric">暂无歌词！</p>
-	      <template v-else-if="music.lyric.length>0">
+	      <p v-else-if="nolyric">暂无歌词！</p>
+	      <template v-else-if="lyric.length>0">
 	        <p
-	          v-for="(item,index) in music.lyric"
+	          v-for="(item,index) in lyric"
 	          :key="index"
-	          :class="{on:music.lyricIndex===index}"
+	          :class="{on:lyricIndex===index}"
 	        >{{ item.text }}</p>
 	      </template>
 	      <p v-else>歌词加载失败！</p>
@@ -27,16 +27,16 @@ export default {
       top: 0 // 歌词居中
     }
   },
-	
+
 	computed: {
-		...mapGetters(['currentMusic', 'music']),
-		
+		...mapGetters(['currentMusic', 'lyricIndex', 'lyric', 'nolyric']),
+
     lyricTop () {
       return `transform :translate3d(0, ${-34 *
-        (this.music.lyricIndex - this.top)}px, 0)`
+        (this.lyricIndex - this.top)}px, 0)`
     }
   },
-  
+
   mounted() {
     window.addEventListener('resize', () => {
       clearTimeout(this.resizeTimer)
@@ -44,7 +44,7 @@ export default {
     })
     this.$nextTick(() => this.clacTop())
   },
-  
+
   methods: {
     // 计算歌词居中的 top值
     clacTop() {

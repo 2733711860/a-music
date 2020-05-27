@@ -5,7 +5,57 @@ export const setUser = function({ commit }, user) {
   commit(types.SET_USER, user)
 }
 
-// music信息
-export const setMusic = function({ commit }, music) {
-  commit(types.SET_MUSIC, music)
+// playlist
+export const setPlaylist = function({ commit }, playlist) {
+  commit(types.SET_PLAYLIST, playlist)
+}
+
+// 当前播放音乐索引
+export const setCurrentIndex = function({ commit }, currentIndex) {
+  commit(types.SET_CURRENTINDEX, currentIndex)
+}
+
+// 当前播放时间
+export const setCurrentTime = function({ commit }, currentTime) {
+  commit(types.SET_CURRENTTIME, currentTime)
+}
+
+// 当前歌词对象
+export const setCurrentLyric = function({ commit }, currentLyric) {
+  commit(types.SET_CURRENTLYRIC, currentLyric)
+}
+
+// 播放状态
+export const setPlaying= function({ commit }, playing) {
+  commit(types.SET_PLAYING, playing)
+}
+
+// 当前缓存进度
+export const setCurrentProgress = function({ commit }, currentProgress) {
+  commit(types.SET_CURRENTPROGRESS, currentProgress)
+}
+
+// 播放模式
+export const setMode = function({ commit }, mode) {
+  commit(types.SET_MODE, mode)
+}
+
+// 播放历史列表
+export const setHistorylist = function({ commit }, historylist) {
+  commit(types.SET_HISTORYLIST, historylist)
+}
+
+// 歌词
+export const setLyric= function({ commit }, lyric) {
+  commit(types.SET_LYRIC, lyric)
+}
+
+// 是否有歌词
+export const setNolyric = function({ commit }, nolyric) {
+  commit(types.SET_NOLYRIC, nolyric)
+}
+
+// 当前播放歌词下标
+export const setLyricIndex = function({ commit }, lyricIndex) {
+  commit(types.SET_LYRICINDEX, lyricIndex)
 }

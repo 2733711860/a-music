@@ -1,6 +1,6 @@
 <template>
 	<div class="musci_progre">
-		<div v-if="currentMusic.id" class="progress_time">{{ music.currentTime | format }}</div>
+		<div v-if="currentMusic.id" class="progress_time">{{ currentTime | format }}</div>
 		<!--进度条拖动-->
 	  <div ref="mmProgress" class="mmProgress" @click="barClick">
 	    <div class="mmProgress-bar"></div>
@@ -21,20 +21,21 @@ export default {
   computed: {
 		...mapGetters([
 			'currentMusic', // 当前音乐播放对象
-			'music'
+			'currentTime',
+			'audioEle'
 		]),
 
 		percent() { // 进度条进度百分比
       const duration = this.currentMusic.duration
-      return this.music.currentTime && duration ? this.music.currentTime / duration : 0
+      return this.currentTime && duration ? this.currentTime / duration : 0
     },
 	},
-	
+
 	filters: {
     // 时间格式化
     format
   },
-  
+
   data() {
     return {
       move: {
@@ -44,7 +45,7 @@ export default {
       }
     }
   },
-  
+
   watch: {
     percent(newPercent) {
       if (newPercent >= 0 && !this.move.status) {
@@ -133,7 +134,7 @@ export default {
     commitPercent() {
       let lineWidth = this.$refs.mmProgress.clientWidth - dotWidth
       let percent = this.$refs.mmProgressInner.clientWidth / lineWidth
-      this.music.audioEle.currentTime = this.currentMusic.duration * percent
+      this.audioEle.currentTime = this.currentMusic.duration * percent
     }
   }
 }

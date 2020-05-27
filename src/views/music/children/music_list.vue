@@ -1,52 +1,65 @@
 <template>
 	<div class="list_page">
-		<van-cell v-for="(item, index) in musicList" :key="index" @click="playThis(item, index)" :title="item.name" :label="item.singer" center>
-		  <template #right-icon>
-		  	<me-loading class="musicLoading" v-show="currentMusic.id == item.id"></me-loading>
-		    <van-icon name="ellipsis" style="line-height: inherit;" />
-		  </template>
-		</van-cell>
+		<div class="music_list">
+			<van-cell v-for="(item, index) in musicList" :key="index" @click="playThis(item, index)" :title="item.name" :label="item.singer" center>
+			  <template #right-icon>
+			  	<me-loading class="musicLoading" v-show="currentMusic.id == item.id"></me-loading>
+			    <van-icon name="ellipsis" style="line-height: inherit;" />
+			  </template>
+			</van-cell>
+		</div>
+
+		<!--底部-->
+		<me-footer></me-footer>
 	</div>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import meLoading from '../../components/me-loading'
+import meFooter from '../../components/me-footer'
 export default {
 	components:{
-		meLoading
+		meLoading, meFooter
 	},
-	
+
 	data () {
 		return {
-			musicList: []
 		}
 	},
-	
+
 	computed: {
-  	...mapGetters(['music', 'currentMusic'])
+  	...mapGetters(['currentMusic', 'playlist']),
+
+  	musicList () {
+  		return this.playlist
+  	}
   },
-	
-	mounted () {
-		this.musicList = this.music.playlist
-	},
-	
+
 	methods: {
 		async playThis(item, index) { // 选择播放
-			this.music.playlist = this.musicList
-			this.music.currentIndex = index
-			this.music.currentIndex = index
-			this.music.playing = true
-			this.music.currentProgress = 0
-			this.setMusic(this.music)
+			this.setCurrentIndex(index)
+			this.setPlaying(true)
   	},
-  	
-  	...mapActions(['setMusic'])
+
+  	...mapMutations({
+      setPlaying: 'SET_PLAYING',
+      setCurrentIndex: 'SET_CURRENTINDEX'
+    })
 	}
 }
 </script>
 
 <style scoped="scoped" lang="less">
+.list_page{
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	.music_list{
+		flex: 1;
+		overflow-y: auto;
+	}
+}
 .musicLoading {
 	height: 15px !important;
 	width: 20px;

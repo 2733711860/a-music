@@ -3,17 +3,18 @@ import { setHistoryList, removeHistoryList, clearHistoryList, setUserId } from '
 
 const ddPlayerMusic = {
   initAudio(that) {
-    const ele = that.music.audioEle
+    const ele = that.audioEle
     // 音频缓冲事件
     ele.onprogress = () => {
       try {
         if (ele.buffered.length > 0) {
-          const duration = that.music.currentMusic.duration
+          const duration = that.currentMusic.duration
           let buffered = 0
           ele.buffered.end(0)
           buffered =
             ele.buffered.end(0) > duration ? duration : ele.buffered.end(0)
-          that.music.currentProgress = buffered / duration
+          let currentProgress = buffered / duration
+          that.setCurrentProgress(currentProgress)
         }
       } catch (e) {}
     }
@@ -27,12 +28,11 @@ const ddPlayerMusic = {
     }
     // 获取当前播放时间
     ele.ontimeupdate = () => {
-    	that.music.currentTime = ele.currentTime
-      that.setMusic(that.music)
+      that.setCurrentTime(ele.currentTime)
     }
     // 当前音乐播放完毕
     ele.onended = () => {
-      if (that.music.mode == 'loop') { // 单曲循环
+      if (that.mode == 'loop') { // 单曲循环
         that.loop()
       } else {
         that.nextSong()
@@ -50,15 +50,15 @@ const ddPlayerMusic = {
       let timer
       clearTimeout(timer)
       timer = setTimeout(() => {
-        that.setPlaying(true)
+      	that.setPlaying(true)
       }, 10)
     }
     // 将能播放的音乐加入播放历史
     ele.oncanplay = async () => {
-    	let list = that.music.historyList.filter(item => item.id == that.currentMusic.id)
+    	let list = that.historyListt.filter(item => item.id == that.currentMusic.id)
     	if (list.length == 0) { // 历史记录里有的，不用再次添加
-    		that.music.historyList = await setHistoryList(that.currentMusic)
-    		that.setMusic(that.music)
+    		that.historyListt = await setHistoryList(that.currentMusic)
+    		that.setHistorylist(that.historyListt)
     	}
     }
   }

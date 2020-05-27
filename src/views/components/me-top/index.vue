@@ -1,6 +1,6 @@
 <template>
 	<div class="me_top">
-		<van-icon name="arrow-left" color="hsla(0,0%,100%,.7)" />
+		<van-icon name="arrow-left" color="hsla(0,0%,100%,.7)" @click="goback" />
 		<div>{{title}}</div>
 		<van-icon name="search" color="hsla(0,0%,100%,.7)" />
 	</div>
@@ -13,12 +13,21 @@ export default {
 		return {
 		}
 	},
-	
+
 	computed: {
   	...mapGetters(['currentMusic']),
-  	
+
   	title () {
   		return this.currentMusic ? this.currentMusic.name : '播放器'
+  	}
+  },
+
+  mounted () {
+  },
+
+  methods: {
+  	goback () {
+  		history.go(-1)
   	}
   }
 }
