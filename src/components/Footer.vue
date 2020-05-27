@@ -14,8 +14,14 @@
     </li>
     <li class="item">
       <router-link to="/cartt" class="flex2 aic f20 text" active-class="active">
-        <van-icon class="text" name="good-job-o"></van-icon>
-        <!--<p class="mt-5 text f12">搜索</p>-->
+      	<me-progress
+	    		:percentage="50"
+	    		:strokeWidth="3"
+	    		:width="50"
+	    		type="circle"
+	    		strokeLinecap="round">
+	    		<img src="../assets/img/alt.jpg" class="circleImg Rotation" style="width: 40px;height: 40px;" />
+	    	</me-progress>
       </router-link>
     </li>
     <li class="item">
@@ -34,7 +40,12 @@
 </template>
 
 <script>
-export default {};
+import meProgress from '../views/components/me-progress'
+export default {
+	components: {
+		meProgress
+	}
+}
 </script>
 
 <style scoped lang="less">
@@ -51,5 +62,23 @@ export default {};
   .active .text {
     color: @red;
   }
+}
+.item{
+	position: relative;
+}
+.circleImg{
+	border-radius: 100%;
+	opacity: .7;
+}
+.Rotation{
+	-webkit-transform: rotate(360deg);
+	animation: rotation 15s linear infinite;
+	-moz-animation: rotation 15s linear infinite;
+	-webkit-animation: rotation 15s linear infinite;
+	-o-animation: rotation 15s linear infinite;
+}
+@-webkit-keyframes rotation{
+	from {-webkit-transform: rotate(0deg);}
+	to {-webkit-transform: rotate(360deg);}
 }
 </style>
