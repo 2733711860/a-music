@@ -5,7 +5,7 @@
 
 		<!--列表-->
 		<div class="child_page">
-			<transition name="move-fade-top-to-bottom">
+			<transition :name="$route.meta.aniName">
 				<router-view class="item_page" wechat-title></router-view>
 			</transition>
 		</div>

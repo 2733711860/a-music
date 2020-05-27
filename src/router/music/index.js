@@ -16,7 +16,8 @@ export default [
 		    },
 		    meta: {
 		    	title: '播放列表',
-		    	mask: true // 是否需要灰色背景
+		    	mask: true, // 是否需要灰色背景
+		    	aniName: 'move-fade-top-to-bottom'
 		    }
 	    }, {
 	      path: '/music/lyric',
@@ -26,7 +27,8 @@ export default [
 		    },
 		    meta: {
 		    	title: '播放页面',
-		    	mask: false // 是否需要灰色背景
+		    	mask: false, // 是否需要灰色背景
+		    	aniName: 'move-fade-bottom-to-top'
 		    }
 	    }
     ]

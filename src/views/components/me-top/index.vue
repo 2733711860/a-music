@@ -18,7 +18,7 @@ export default {
   	...mapGetters(['currentMusic']),
 
   	title () {
-  		return this.currentMusic ? this.currentMusic.name : '播放器'
+  		return this.currentMusic && this.currentMusic.name ? this.currentMusic.name : '播放器'
   	}
   },
 

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="lyric_singer">张三</div>
+		<div class="lyric_singer">{{currentMusic.singer}}</div>
 		<!--歌词-->
 	  <div ref="musicLyric" class="music-lyric">
 	    <div class="music-lyric-items" :style="lyricTop">

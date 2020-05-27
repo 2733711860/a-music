@@ -18,11 +18,11 @@
 	      	<me-progress
 		    		:percentage="percent"
 		    		:strokeWidth="3"
-		    		:width="45"
+		    		:width="50"
 		    		trackColor="rgba(255, 255, 255, .3)"
 		    		type="circle"
 		    		strokeLinecap="round">
-		    		<img src="../../../assets/img/alt.jpg" class="circleImg Rotation" style="width: 35px;height: 35px;" />
+		    		<img :src="picUrl" class="circleImg" :class="{Rotation: playing}" style="width: 40px;height: 40px;" />
 		    	</me-progress>
 	      </router-link>
 	    </li>
@@ -51,12 +51,18 @@ export default {
 	},
 
 	computed: {
-		...mapGetters([ 'currentTime', 'currentMusic']),
+		...mapGetters([ 'currentTime', 'currentMusic', 'playing']),
 
 		percent() { // 进度条进度百分比
       const duration = this.currentMusic.duration
       return this.currentTime && duration ? (this.currentTime / duration) * 100 : 0
-    }
+    },
+    
+    picUrl() {
+      return this.currentMusic.id && this.currentMusic.image
+      	? `${this.currentMusic.image}?param=300y300`
+      	: require('../../../assets/image/bg.jpg')
+    },
 	}
 }
 </script>

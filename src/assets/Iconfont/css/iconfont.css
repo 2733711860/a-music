@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.iconxihuan:before {
+.iconxihuan:before { /*喜欢*/
   content: "\e63b";
 }
 
@@ -27,11 +27,11 @@
   content: "\e6c5";
 }
 
-.icondkw_xiaoxi:before {
+.icondkw_xiaoxi:before { /*消息*/
   content: "\e606";
 }
 
-.iconxihuan1:before {
+.iconxihuan1:before { /*喜欢*/
   content: "\e76a";
 }
 
@@ -47,7 +47,7 @@
   content: "\e852";
 }
 
-.icon2:before {
+.icon2:before { /*分类*/
   content: "\e623";
 }
 
@@ -71,7 +71,7 @@
   content: "\e66d";
 }
 
-.iconicon--:before {
+.iconiconsj:before { /*随机*/
   content: "\e77d";
 }
 
