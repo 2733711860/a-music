@@ -15,19 +15,19 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
-//plugins: [persistedState()]
+	plugins: [persistedState()]
 
-	plugins: [ // sessionStorage存储
-    persistedState({
-    	storage: window.sessionStorage,
+//	plugins: [ // sessionStorage存储
+//  persistedState({
+//  	storage: window.sessionStorage,
 //  	reducer(val) { // 持久化指定
 //      return {
 //        // 只储存state中的user
 //        user: val.user
 //      }
 //    }
-    })
-	]
+//  })
+//	]
 
 //	plugins: [ // Cookies存储
 //  persistedState({

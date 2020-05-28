@@ -59,3 +59,8 @@ export const setNolyric = function({ commit }, nolyric) {
 export const setLyricIndex = function({ commit }, lyricIndex) {
   commit(types.SET_LYRICINDEX, lyricIndex)
 }
+
+// 音量
+export const setVolume = function({ commit }, volume) {
+  commit(types.SET_VOLUME, volume)
+}

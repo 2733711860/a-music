@@ -64,6 +64,11 @@ const mutations = {
   // 当前播放歌词下标
   [types.SET_LYRICINDEX](state, lyricIndex) {
     state.lyricIndex = lyricIndex
+  },
+  
+  // 音量
+  [types.SET_VOLUME](state, volume) {
+    state.volume = volume
   }
 }
 

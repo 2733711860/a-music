@@ -1,30 +1,38 @@
 <template>
-	<div class="bottom_lyric">
-		<div class="music_mode">
-			<span :class="[{iconxunhuanbofang: mode == 'listLoop'}, {icondanquxunhuan: mode == 'loop'}, {iconiconsj: mode == 'random'}, 'iconfont', 'fosz']" @click="modeShow = !modeShow"></span>
-			<div :class="[{hHeigh : modeShow}, 'mode_choo']">
-				<div class="mode_lvj"></div>
-				<div class="mode_div">
-					<div @click="chooseMode('listLoop')" :class="{'active': mode == 'listLoop'}"><span class="icon iconfont foszs">&#xe66c;</span>顺序播放</div>
-					<div @click="chooseMode('loop')" :class="{'active': mode == 'loop'}"><span class="icon iconfont foszs">&#xe66d;</span>单曲循环</div>
-					<div @click="chooseMode('random')" :class="{'active': mode == 'random'}"><span class="icon iconfont foszs">&#xe77d;</span>随机播放</div>
+	<div>
+		<div class="bottom_lyric">
+			<div class="music_mode">
+				<span :class="[{iconxunhuanbofang: mode == 'listLoop'}, {icondanquxunhuan: mode == 'loop'}, {iconiconsj: mode == 'random'}, 'iconfont', 'fosz']" @click="modeShow = !modeShow"></span>
+				<div :class="[{hHeigh : modeShow}, 'mode_choo']">
+					<div class="mode_lvj"></div>
+					<div class="mode_div">
+						<div @click="chooseMode('listLoop')" :class="{'active': mode == 'listLoop'}"><span class="icon iconfont foszs">&#xe66c;</span>顺序播放</div>
+						<div @click="chooseMode('loop')" :class="{'active': mode == 'loop'}"><span class="icon iconfont foszs">&#xe66d;</span>单曲循环</div>
+						<div @click="chooseMode('random')" :class="{'active': mode == 'random'}"><span class="icon iconfont foszs">&#xe77d;</span>随机播放</div>
+					</div>
 				</div>
 			</div>
+			<div class="bottom_button">
+				<span class="icon iconfont fosz" @click="pre()">&#xe603;</span>
+				<span class="icon iconfont foszz" @click="play">{{ playing ? '&#xe643;' : '&#xe609;'}}</span>
+				<span class="icon iconfont fosz" @click="next()">&#xe602;</span>
+			</div>
+			<div>
+				<span class="icon iconfont foszzx" @click="showMore">&#xe62f;</span>
+			</div>
 		</div>
-		<div class="bottom_button">
-			<span class="icon iconfont fosz" @click="pre()">&#xe603;</span>
-			<span class="icon iconfont foszz" @click="play">{{ playing ? '&#xe643;' : '&#xe609;'}}</span>
-			<span class="icon iconfont fosz" @click="next()">&#xe602;</span>
-		</div>
-		<div>
-			<span class="icon iconfont foszzx">&#xe62f;</span>
-		</div>
+		<me-more ref="moreFunc"></me-more>
 	</div>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
+import meMore from '../me-more'
 export default {
+	components: {
+		meMore
+	},
+	
 	data () {
 		return {
 			modeShow: false
@@ -84,9 +92,13 @@ export default {
       }
   	},
   	
-  	chooseMode(mode) {
+  	chooseMode (mode) { // 选择模式
   		this.setMode(mode)
   		this.modeShow = false
+  	},
+  	
+  	showMore () { // 音量弹出
+  		this.$refs.moreFunc.showMoreF()
   	},
 
 		...mapMutations({

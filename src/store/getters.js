@@ -41,3 +41,6 @@ export const nolyric = state => state.nolyric
 
 // 播放历史列表
 export const lyricIndex = state => state.lyricIndex
+
+// 音量
+export const volume = state => state.volume

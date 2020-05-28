@@ -1,7 +1,7 @@
 <template>
 	<div class="list_page">
 		<div class="music_list">
-			<van-cell v-for="(item, index) in musicList" :key="index" @click="playThis(item, index)" :title="item.name" :label="item.singer" center>
+			<van-cell v-for="(item, index) in musicList" :key="index" @click="playThis(item, index)" :title="item.name" :label="item.singer" center title-class="vanCell">
 			  <template #right-icon>
 			  	<me-loading class="musicLoading" v-show="currentMusic.id == item.id"></me-loading>
 			    <van-icon name="ellipsis" style="line-height: inherit;" />
@@ -64,5 +64,10 @@ export default {
 	height: 15px !important;
 	width: 20px;
 	margin-right: 20px;
+}
+.vanCell{
+	background-color: rgba(0, 0, 0, 0);
+	padding: 0 12px;
+	color: rgba(255, 255, 255, 0.9);
 }
 </style>

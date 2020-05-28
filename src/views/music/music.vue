@@ -45,8 +45,7 @@ export default {
     },
 
     ...mapGetters([ 'audioEle', 'playlist', 'currentIndex', 'currentMusic', 'currentTime',
-    	'playing', 'mode', 'historyList', 'lyric', 'nolyric'
-    ]),
+    	'playing', 'mode', 'historyList', 'lyric', 'nolyric', 'volume' ]),
 
     historyListt: {
     	get() {
@@ -93,6 +92,10 @@ export default {
         }
       }
       this.setLyricIndex(lyricIndexx)
+    },
+    
+    volume (newVolume) { // 音量变化
+    	this.audioEle.volume = newVolume
     }
 	},
 

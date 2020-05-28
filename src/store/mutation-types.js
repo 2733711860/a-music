@@ -23,3 +23,5 @@ export const SET_LYRIC = 'SET_LYRIC' // 歌词
 export const SET_NOLYRIC = 'SET_NOLYRIC' // 是否有歌词
 
 export const SET_LYRICINDEX = 'SET_LYRICINDEX' // 当前播放歌词下标
+
+export const SET_VOLUME = 'SET_VOLUME' // 音量
