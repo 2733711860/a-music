@@ -2,6 +2,7 @@
 	<div>
 		<div class="lyric_singer">{{currentMusic.singer}}</div>
 		<!--歌词-->
+		<div id="asdsa"></div>
 	  <div ref="musicLyric" class="music-lyric">
 	    <div class="music-lyric-items" :style="lyricTop">
 	      <p v-if="!currentMusic.id">还没有播放音乐哦！</p>
@@ -24,7 +25,8 @@ import { mapGetters } from 'vuex'
 export default {
 	data() {
     return {
-      top: 0 // 歌词居中
+      top: 0, // 歌词居中
+      lheight: 34
     }
   },
 
@@ -32,7 +34,7 @@ export default {
 		...mapGetters(['currentMusic', 'lyricIndex', 'lyric', 'nolyric']),
 
     lyricTop () {
-      return `transform :translate3d(0, ${-34 *
+      return `transform :translate3d(0, ${-(this.lheight) *
         (this.lyricIndex - this.top)}px, 0)`
     }
   },
@@ -43,6 +45,7 @@ export default {
       this.resizeTimer = setTimeout(() => this.clacTop(), 60)
     })
     this.$nextTick(() => this.clacTop())
+    this.lheight = getComputedStyle(document.getElementById('asdsa'),null).getPropertyValue('line-height').replace(/px/g, '')
   },
 
   methods: {
@@ -54,13 +57,19 @@ export default {
         return
       }
       const height = dom.offsetHeight
-      this.top = Math.floor(height / 34 / 2)
+      this.top = Math.floor(height / this.lheight / 2)
     }
   }
 }
 </script>
 
 <style scoped="scoped" lang="less">
+#asdsa{
+	display: none;
+	line-height: 34px;
+	padding: 0;
+	margin: 0;
+}
 .lyric_singer{
 	text-align: center;
 	font-size: 14px;

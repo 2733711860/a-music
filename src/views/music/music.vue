@@ -11,8 +11,8 @@
 		</div>
 
 		<!--背景设置-->
-		<div :class="[{isflur: $route.meta.mask}, 'dd_bg_pic']" :style="{ backgroundImage: picUrl }"></div>
-    <div :class="[{isflurk: $route.meta.mask}, 'dd_bg_mask']"></div>
+		<div class="dd_bg_pic" :style="{ backgroundImage: picUrl }"></div>
+    <div class="dd_bg_mask"></div>
 	</div>
 </template>
 
@@ -93,7 +93,7 @@ export default {
       }
       this.setLyricIndex(lyricIndexx)
     },
-    
+
     volume (newVolume) { // 音量变化
     	this.audioEle.volume = newVolume
     }
@@ -197,6 +197,7 @@ export default {
 		bottom: 0;
 		left: 0;
 		right: 0;
+		z-index: -2;
 	}
 	.dd_bg_pic{
 		z-index: -2;
@@ -205,17 +206,13 @@ export default {
 		background-position: 50%;
 		transition: all 0.8s;
 		-webkit-transition: all 0.8s;
-	}
-	.isflur{
 		filter: blur(7px);
 		-webkit-filter: blur(7px);
-		opacity: .7;
+		opacity: .8;
 	}
 	.dd_bg_mask{
-		z-index: -1;
-		background-color: rgba(0, 0, 0, .3);
-	}
-	.isflurk{
-		background-color: rgba(0, 0, 0, .6);
+		opacity: .5;
+		filter: none;
+		background-color: rgba(46, 48, 48, 1);
 	}
 </style>

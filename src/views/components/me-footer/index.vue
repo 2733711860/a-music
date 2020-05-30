@@ -57,7 +57,7 @@ export default {
       const duration = this.currentMusic.duration
       return this.currentTime && duration ? (this.currentTime / duration) * 100 : 0
     },
-    
+
     picUrl() {
       return this.currentMusic.id && this.currentMusic.image
       	? `${this.currentMusic.image}?param=300y300`
@@ -74,9 +74,9 @@ export default {
 .footer {
   height: 60px;
   width: 100%;
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(242, 243, 245, .1);
   .text {
-    color: #797d82;
+    color: rgba(255, 255, 255, .9);
   }
   .active .text {
     color: @red;
