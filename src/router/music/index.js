@@ -16,8 +16,8 @@ export default [
 		    },
 		    meta: {
 		    	title: '播放列表',
-		    	mask: true, // 是否需要灰色背景
-		    	aniName: 'move-fade-top-to-bottom'
+		    	aniName: 'move-fade-top-to-bottom',
+		    	showTop: true
 		    }
 	    }, {
 	      path: '/music/lyric',
@@ -26,9 +26,19 @@ export default [
 		      require(['@/views/music/children/music_lyric.vue'], resolve)
 		    },
 		    meta: {
-		    	title: '播放页面',
-		    	mask: false, // 是否需要灰色背景
-		    	aniName: 'move-fade-bottom-to-top'
+		    	title: '正在播放',
+		    	aniName: 'move-fade-bottom-to-top',
+		    	showTop: true
+		    }
+	    }, {
+	      path: '/music/search',
+	      name: 'music/search',
+	      component: resolve => {
+		      require(['@/views/music/children/music_search.vue'], resolve)
+		    },
+		    meta: {
+		    	title: '搜索',
+		    	aniName: 'move-fade-top-to-bottom'
 		    }
 	    }
     ]

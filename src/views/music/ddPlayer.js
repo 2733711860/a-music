@@ -1,6 +1,3 @@
-import { playMode } from '@/utils/Config.js'
-import { setHistoryList, removeHistoryList, clearHistoryList, setUserId } from '@/utils/history.js'
-
 const ddPlayerMusic = {
   initAudio(that) {
     const ele = that.audioEle
@@ -57,7 +54,7 @@ const ddPlayerMusic = {
     ele.oncanplay = async () => {
     	let list = that.historyListt.filter(item => item.id == that.currentMusic.id)
     	if (list.length == 0) { // 历史记录里有的，不用再次添加
-    		that.historyListt = await setHistoryList(that.currentMusic)
+    		that.historyListt.push(that.currentMusic)
     		that.setHistorylist(that.historyListt)
     	}
     }

@@ -44,3 +44,12 @@ export const lyricIndex = state => state.lyricIndex
 
 // 音量
 export const volume = state => state.volume
+
+// 是否静音
+export const isMute = state => state.isMute
+
+// 静音前音量
+export const lastVolumn = state => state.lastVolumn
+
+// 播放页面样式
+export const playStyle = state => state.playStyle

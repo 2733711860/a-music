@@ -12,7 +12,10 @@ const state = {
 	lyric: [], // 歌词
   nolyric: false, // 是否有歌词
   lyricIndex: 0, // 当前播放歌词下标
-  volume: 10 // 音量
+  volume: 0.5, // 音量
+  lastVolumn: 0, // 静音前音量
+  isMute: false, // 是否静音
+  playStyle: 0 // 0:播放器，1:歌词
 }
 
 export default state

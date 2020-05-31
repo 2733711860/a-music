@@ -47,8 +47,8 @@ const mutations = {
   },
 
   // 播放历史列表
-  [types.SET_HISTORYLIST](state, historylist) {
-    state.historylist = historylist
+  [types.SET_HISTORYLIST](state, historyList) {
+    state.historyList = historyList
   },
 
   // 歌词
@@ -69,6 +69,21 @@ const mutations = {
   // 音量
   [types.SET_VOLUME](state, volume) {
     state.volume = volume
+  },
+  
+  // 是否静音
+  [types.SET_ISMUTE](state, isMute) {
+    state.isMute = isMute
+  },
+  
+  // 静音前音量
+  [types.SET_LASTVOLUMN](state, lastVolumn) {
+    state.lastVolumn = lastVolumn
+  },
+  
+  // 播放页面样式
+  [types.SET_PLAYSTYLE](state, playStyle) {
+    state.playStyle = playStyle
   }
 }
 

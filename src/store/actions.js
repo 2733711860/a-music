@@ -64,3 +64,8 @@ export const setLyricIndex = function({ commit }, lyricIndex) {
 export const setVolume = function({ commit }, volume) {
   commit(types.SET_VOLUME, volume)
 }
+
+// 是否静音
+export const setIsMute = function({ commit }, isMute) {
+  commit(types.SET_ISMUTE, isMute)
+}

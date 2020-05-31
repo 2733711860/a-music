@@ -18,7 +18,8 @@ import {
   Image,
   Sticky,
   ActionSheet,
-  Slider
+  Slider,
+  Search
 } from "vant";
 
 Vue.use(Icon);
@@ -40,4 +41,4 @@ Vue.use(Image);
 Vue.use(Sticky);
 Vue.use(ActionSheet);
 Vue.use(Slider);
-
+Vue.use(Search);

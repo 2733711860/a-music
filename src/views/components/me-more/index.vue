@@ -4,7 +4,7 @@
 			<div class="more_div">
 				<div class="more_div_title">杨小壮 - 我承认我自卑</div>
 				<div class="more_colume">
-					<span class="icon iconfont marrh">&#xe662;</span>
+					<span class="icon iconfont marrh" @click="changeMute">&#xe662;</span>
 					<van-slider v-model="value" @input="change" bar-height="1px" button-size="12px" />
 				</div>
 				<div class="more_list">
@@ -31,7 +31,13 @@ export default {
 	},
 	
 	computed: {
-    ...mapGetters([ 'volume' ])
+    ...mapGetters([ 'volume', 'isMute' ])
+	},
+	
+	watch: {
+		isMute (newMute) {
+			this.value = newMute ? 0 : this.volume * 100
+		}
 	},
 	
 	methods: {
@@ -44,6 +50,14 @@ export default {
   		let percent = this.value / 100
   		this.setVolume(percent)
   	},
+  	
+  	changeMute () { // 静音
+  		this.setIsMute(!this.isMute)
+  	},
+  	
+  	...mapMutations({
+      setIsMute: 'SET_ISMUTE',
+    }),
   	
   	...mapActions(['setVolume'])
 	}

@@ -3,7 +3,7 @@
 		<div class="lyric_singer">{{currentMusic.singer}}</div>
 		<!--歌词-->
 		<div id="asdsa"></div>
-	  <div ref="musicLyric" class="music-lyric">
+	  <div ref="musicLyric" class="music-lyric" @click="changePlayer">
 	    <div class="music-lyric-items" :style="lyricTop">
 	      <p v-if="!currentMusic.id">还没有播放音乐哦！</p>
 	      <p v-else-if="nolyric">暂无歌词！</p>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
 	data() {
     return {
@@ -58,7 +58,15 @@ export default {
       }
       const height = dom.offsetHeight
       this.top = Math.floor(height / this.lheight / 2)
-    }
+    },
+    
+    changePlayer () { // 改变播放器页面样式，改为播放器
+			this.setPlaystyle(0)
+		},
+		
+		...mapMutations({
+      setPlaystyle: 'SET_PLAYSTYLE'
+    })
   }
 }
 </script>

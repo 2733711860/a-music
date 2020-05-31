@@ -1,7 +1,8 @@
 <template>
 	<div class="me_lyric_page">
 		<div class="music_lyric">
-			<me-lyric></me-lyric>
+			<me-lyric v-if="playStyle == 1"></me-lyric>
+			<me-player v-if="playStyle == 0"></me-player>
 		</div>
 		
 		<div class="music_lyric_bottom">
@@ -15,17 +16,19 @@
 
 <script>
 import meLyric from '../../components/me-lyric'
+import mePlayer from '../../components/me-player'
 import meSlider from '../../components/me-slider'
 import meBottom from '../../components/me-bottom'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
 	components: {
-		meLyric, meSlider, meBottom
+		meLyric, meSlider, meBottom, mePlayer
 	},
 	
 	computed: {
     ...mapGetters([
       'currentMusic', // 当前播放音乐
+      'playStyle'
     ])
   },
 }

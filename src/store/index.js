@@ -15,7 +15,18 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
-	plugins: [persistedState()]
+	plugins: [persistedState({
+		storage: window.localStorage,
+		reducer(val) {
+			return {
+				mode: val.mode,
+				historyList: val.historyList,
+				volume: val.volume,
+				lastVolumn: val.lastVolumn,
+				isMute: val.isMute
+			}
+		}
+	})]
 
 //	plugins: [ // sessionStorage存储
 //  persistedState({

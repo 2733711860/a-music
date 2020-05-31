@@ -1,7 +1,7 @@
 <template>
 	<div class="music_page">
 		<!--顶部-->
-		<me-top></me-top>
+		<me-top v-if="$route.meta.showTop"></me-top>
 
 		<!--列表-->
 		<div class="child_page">
@@ -34,6 +34,7 @@ export default {
 	mounted () {
 		this.$nextTick(() => {
       ddPlayerMusic.initAudio(this)
+    	this.audioEle.volume = this.isMute ? 0 : this.volume
     })
 	},
 
@@ -45,7 +46,7 @@ export default {
     },
 
     ...mapGetters([ 'audioEle', 'playlist', 'currentIndex', 'currentMusic', 'currentTime',
-    	'playing', 'mode', 'historyList', 'lyric', 'nolyric', 'volume' ]),
+    	'playing', 'mode', 'historyList', 'lyric', 'nolyric', 'volume', 'isMute', 'lastVolumn' ]),
 
     historyListt: {
     	get() {
@@ -95,7 +96,19 @@ export default {
     },
 
     volume (newVolume) { // 音量变化
+    	console.log(newVolume)
+    	let isMutue = newVolume == 0 ? true : false
+    	this.setIsMute(isMutue)
     	this.audioEle.volume = newVolume
+    },
+    
+    isMute (newMute) { // 是否静音变化
+    	if (newMute) { // 静音
+    		this.setLastvolumn(this.volume) // 静音前音量
+    		this.setVolume(0)
+    	} else {
+    		this.setVolume(this.lastVolumn)
+    	}
     }
 	},
 
@@ -156,9 +169,11 @@ export default {
       setNolyric: 'SET_NOLYRIC',
       setLyric: 'SET_LYRIC',
       setLyricIndex: 'SET_LYRICINDEX',
+      setIsMute: 'SET_ISMUTE',
+      setLastvolumn: 'SET_LASTVOLUMN'
     }),
 
-    ...mapActions(['setHistorylist'])
+    ...mapActions(['setHistorylist', 'setVolume'])
 	}
 }
 </script>

@@ -18,11 +18,14 @@ export default {
   	...mapGetters(['currentMusic']),
 
   	title () {
-  		return this.currentMusic && this.currentMusic.name ? this.currentMusic.name : '播放器'
+  		return this.$route.path == '/music/lyric' ? 
+  			(this.currentMusic && this.currentMusic.name ? this.currentMusic.name : this.$route.meta.title) :
+  			this.$route.meta.title
   	}
   },
 
   mounted () {
+  	console.log(this.$route)
   },
 
   methods: {
