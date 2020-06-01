@@ -31,10 +31,13 @@ export default {
   sheet_recommend: baseUrl + '/sheet/recommend', // 每日推荐歌单
   sheet_boutique: baseUrl + '/sheet/boutique', // 精品歌单
   search: baseUrl + '/search', // 搜索
+  search_hot: baseUrl + '/search/hot', // 热搜
   login_cellphone: baseUrl + '/login/cellphone', // 手机密码登陆
   like_music: baseUrl + '/like/music', // 喜欢和取消喜欢
   like_search: baseUrl + '/like/search', // 查询喜欢的歌曲
   music_detail: baseUrl + '/music/detail', // 歌曲详情
   rank_allList: baseUrl + '/rank/allList', // 获取所有榜单
-  rank_topList: baseUrl + '/rank/topList', // 获取榜单列表
+  rank_allRank: baseUrl + '/rank/allRank', // 获取榜单列表
+  rank_detail: baseUrl + '/rank/detail', // 获取榜单列表
+  rank_topList: baseUrl + '/rank/topList', // 获取榜单详情
 }

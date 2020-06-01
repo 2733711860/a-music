@@ -5,8 +5,9 @@ export default {
   title: 'demo',
 
   baseUrl: {  //  吉意保的请求路径
-    dev: 'http://121.41.79.10',
-    tes: 'https://tweixin.jxlife.com.cn/pre-jiyibaojr/com.ifp.ipartner/',
+		dev: 'http://localhost:3001',
+//  dev: 'http://121.41.79.10',
+    tes: 'http://localhost:3001',
     pro: 'https://tjxw.jxlife.com.cn/com.ifp.ipartner/' // 'https://weixin.jxlife.com.cn/jiyibaojr/com.ifp.ipartner/'
   }
 }

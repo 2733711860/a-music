@@ -54,7 +54,7 @@ export default {
 				color: rgba(255, 255, 255, .9);
 			}
 			.van-search__content{
-				background-color: rgba(0, 0, 0, .1);
+				background-color: rgba(255, 255, 255, .3);
 				.van-cell{
 					color: rgba(255, 255, 255, .9);
 					padding: 5px 10px !important;

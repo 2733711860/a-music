@@ -8,9 +8,9 @@
 	      </router-link>
 	    </li>
 	    <li class="item">
-	      <router-link to="/demo" class="flex2 aic f20 text" active-class="active">
+	      <router-link to="/music/rank" class="flex2 aic f20 text" active-class="active">
 	        <van-icon class="text" name="service-o"></van-icon>
-	        <p class="mt-5 text f12">歌单</p>
+	        <p class="mt-5 text f12">排行</p>
 	      </router-link>
 	    </li>
 	    <li class="item">

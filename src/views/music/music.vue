@@ -96,12 +96,11 @@ export default {
     },
 
     volume (newVolume) { // 音量变化
-    	console.log(newVolume)
     	let isMutue = newVolume == 0 ? true : false
     	this.setIsMute(isMutue)
     	this.audioEle.volume = newVolume
     },
-    
+
     isMute (newMute) { // 是否静音变化
     	if (newMute) { // 静音
     		this.setLastvolumn(this.volume) // 静音前音量

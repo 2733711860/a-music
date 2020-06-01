@@ -40,6 +40,27 @@ export default [
 		    	title: '搜索',
 		    	aniName: 'move-fade-top-to-bottom'
 		    }
+	    }, {
+	      path: '/music/rank',
+	      name: 'music/rank',
+	      component: resolve => {
+		      require(['@/views/music/children/music_rank.vue'], resolve)
+		    },
+		    meta: {
+		    	title: '排行榜',
+		    	aniName: 'move-fade-top-to-bottom',
+		    	showTop: true
+		    }
+	    }, {
+	      path: '/music/rank/detail',
+	      name: 'music/rank/detail',
+	      component: resolve => {
+		      require(['@/views/music/children/music_rank_detail.vue'], resolve)
+		    },
+		    meta: {
+		    	title: '排行榜',
+		    	aniName: 'move-fade-top-to-bottom'
+		    }
 	    }
     ]
   }

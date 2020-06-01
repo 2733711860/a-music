@@ -464,23 +464,24 @@ export function exeTime(str,x){
 // 时间戳转日期型
 //time:时间戳
 //fmt:日期格式
-export function dateFormatFun(time,fmt){
+export function dateFormatFun(time,fmtt){
+	let fmt = fmtt ? fmtt : 1;
   if (time > 0) {
     switch (fmt) {
       case 1:
-        return fmtDate(new Date(time), 'yyyy-MM-dd');
+        return formatDate(new Date(time), 'yyyy-MM-dd');
       case 2:
-        return fmtDate(new Date(time), 'yyyy-MM-dd hh:mm');
+        return formatDate(new Date(time), 'yyyy-MM-dd hh:mm');
       case 3:
-        return fmtDate(new Date(time), 'MM月dd日 hh:mm');
+        return formatDate(new Date(time), 'MM月dd日 hh:mm');
       case 4:
-        return fmtDate(new Date(time), 'yyyy-MM-dd hh:mm:ss');
+        return formatDate(new Date(time), 'yyyy-MM-dd hh:mm:ss');
       case 5:
-        return fmtDate(new Date(time), 'hh:mm');
+        return formatDate(new Date(time), 'hh:mm');
       case 6:
-        return fmtDate(new Date(time), 'hh:mm:ss');
+        return formatDate(new Date(time), 'hh:mm:ss');
       default:
-        return fmtDate(new Date(time), 'yyyy-MM-dd');
+        return formatDate(new Date(time), 'yyyy-MM-dd');
     }
   }
 }

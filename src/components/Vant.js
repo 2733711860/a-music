@@ -19,7 +19,8 @@ import {
   Sticky,
   ActionSheet,
   Slider,
-  Search
+  Search,
+  Tag
 } from "vant";
 
 Vue.use(Icon);
@@ -42,3 +43,4 @@ Vue.use(Sticky);
 Vue.use(ActionSheet);
 Vue.use(Slider);
 Vue.use(Search);
+Vue.use(Tag);
