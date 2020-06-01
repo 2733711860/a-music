@@ -10,7 +10,7 @@
 		  		</div>
 		  	</div>
 		  </template>
-		  
+
 		  <template #right-icon>
 		  	<me-loading class="musicLoading" v-show="currentMusic.id == item.id"></me-loading>
 		    <van-icon name="ellipsis" style="line-height: inherit;" />
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 import meLoading from '../me-loading'
 export default {
 	components:{
@@ -31,7 +31,7 @@ export default {
 		return {
 		}
 	},
-	
+
 	props: {
 		musicList: {
 			type: Array,
@@ -44,15 +44,29 @@ export default {
   },
 
 	methods: {
-		async playThis(item, index) { // 选择播放
-			this.setCurrentIndex(index)
-			this.setPlaying(true)
+		async playThis(music, index) { // 选择播放
+			if (this.$route.path == "/music/list") { // 正在播放列表页面，不需要重置
+        // 正在播放列表页面
+        if (music.id !== this.currentMusic.id) {
+          this.setCurrentIndex(index)
+          this.setPlaying(true)
+        }
+     } else { // 其他重置播放列表
+	     	this.selectPlay({
+	        list: this.musicList,
+	        index
+	      });
+      }
   	},
 
   	...mapMutations({
-      setPlaying: 'SET_PLAYING',
-      setCurrentIndex: 'SET_CURRENTINDEX'
-    })
+      setPlaying: "SET_PLAYING",
+      setCurrentIndex: "SET_CURRENTINDEX"
+    }),
+
+    ...mapActions([
+      "selectPlay"
+    ])
 	}
 }
 </script>

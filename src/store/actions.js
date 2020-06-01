@@ -69,3 +69,10 @@ export const setVolume = function({ commit }, volume) {
 export const setIsMute = function({ commit }, isMute) {
   commit(types.SET_ISMUTE, isMute)
 }
+
+// 选择播放（会更新整个播放列表）
+export const selectPlay = function({ commit }, { list, index }) {
+  commit(types.SET_PLAYLIST, list) // 更新播放列表
+  commit(types.SET_CURRENTINDEX, index) // 当前播放音乐索引更新
+  commit(types.SET_PLAYING, true) //更新播放状态
+}
