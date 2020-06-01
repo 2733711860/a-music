@@ -3,17 +3,17 @@
 		<me-list class="melist" :musicList="musicList"></me-list>
 
 		<!--底部-->
-		<me-footer></me-footer>
+		<me-footer-two></me-footer-two>
 	</div>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import meList from '../../components/me-list'
-import meFooter from '../../components/me-footer'
+import meFooterTwo from '../../components/me-footer-two'
 export default {
 	components:{
-		meList, meFooter
+		meList, meFooterTwo
 	},
 
 	data () {

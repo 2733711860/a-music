@@ -17,7 +17,7 @@
 				</div>
 			</div>
 
-			<me-list :musicList="musicList"></me-list>
+			<me-list :musicList="musicList" class="music_list"></me-list>
 		</div>
 
 		<!--背景设置-->
@@ -102,6 +102,9 @@ export default {
 	.rankList{
 		flex: 1;
 		overflow-y: auto;
+		.music_list{
+			background-color: rgba(0, 0, 0, .6);
+		}
 		.rank_top{
 			height: 160px;
 			display: flex;
