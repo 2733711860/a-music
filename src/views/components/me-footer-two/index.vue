@@ -121,6 +121,9 @@ export default {
 			font-size: 12px;
 			color: rgba(255, 255, 255, .6);
 			line-height: 18px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 		.music_name{
 			font-size: 14px;
