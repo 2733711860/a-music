@@ -50,9 +50,9 @@
         type: [Number, String],
         default: 0,
         required: true,
-        validator: val => {
-          return val >= 0 && val <= 100
-        }
+//      validator: val => {
+//        return val >= 0 && val <= 100
+//      }
       },
       strokeWidth: { // 进度条宽度
         type: [Number, String],

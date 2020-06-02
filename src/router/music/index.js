@@ -28,8 +28,7 @@ export default [
 		    },
 		    meta: {
 		    	title: '播放列表',
-		    	aniName: 'move-fade-top-to-bottom',
-		    	showTop: true
+		    	aniName: 'move-fade-top-to-bottom'
 		    }
 	    }, {
 	      path: '/music/lyric',
@@ -71,6 +70,16 @@ export default [
 		    },
 		    meta: {
 		    	title: '排行榜',
+		    	aniName: 'move-fade-top-to-bottom'
+		    }
+	    }, {
+	      path: '/music/sheet',
+	      name: 'music/sheet',
+	      component: resolve => {
+		      require(['@/views/music/children/music_sheet.vue'], resolve)
+		    },
+		    meta: {
+		    	title: '歌单',
 		    	aniName: 'move-fade-top-to-bottom'
 		    }
 	    }

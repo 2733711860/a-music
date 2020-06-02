@@ -113,6 +113,7 @@ export default {
 	}
 	.me_footer_desc{
 		flex: 1;
+		overflow-y: hidden;
 		padding: 0 20px;
 		line-height: 26px;
 		font-size: 16px;
@@ -120,6 +121,12 @@ export default {
 			font-size: 12px;
 			color: rgba(255, 255, 255, .6);
 			line-height: 18px;
+		}
+		.music_name{
+			font-size: 14px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
 	}
 	.me_footer_icon{

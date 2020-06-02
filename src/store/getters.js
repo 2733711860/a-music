@@ -53,3 +53,12 @@ export const lastVolumn = state => state.lastVolumn
 
 // 播放页面样式
 export const playStyle = state => state.playStyle
+
+// 列表页面数据
+export const listData = state => state.listData
+
+// 新歌速递
+export const newMusics = state => state.newMusics
+
+// 歌单
+export const sheets = state => state.sheets

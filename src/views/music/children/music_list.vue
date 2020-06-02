@@ -1,6 +1,12 @@
 <template>
 	<div class="list_page">
-		<me-list class="melist" :musicList="musicList"></me-list>
+		<div class="me_top">
+			<van-icon name="arrow-left" color="hsla(0,0%,100%,.7)" @click="goback" />
+			<div>列表</div>
+			<van-icon name="search" color="hsla(0,0%,100%,.7)" />
+		</div>
+		
+		<me-list class="melist" :musicList="listData"></me-list>
 
 		<!--底部-->
 		<me-footer-two></me-footer-two>
@@ -20,16 +26,15 @@ export default {
 		return {
 		}
 	},
-
+	
 	computed: {
-  	...mapGetters(['playlist']),
-
-  	musicList () {
-  		return this.playlist
-  	}
-  },
-
+		...mapGetters([ 'listData' ]),
+	},
+	
 	methods: {
+		goback () {
+			history.go(-1)
+		}
 	}
 }
 </script>
@@ -39,6 +44,13 @@ export default {
 	display: flex;
 	flex-flow: column;
 	justify-content: space-between;
+	.me_top{
+		height: 40px;
+		padding: 0 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 	.melist{
 		flex: 1;
 		overflow-y: auto;

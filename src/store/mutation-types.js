@@ -31,3 +31,9 @@ export const SET_ISMUTE = 'SET_ISMUTE' // 是否静音
 export const SET_LASTVOLUMN = 'SET_LASTVOLUMN' // 静音前音量
 
 export const SET_PLAYSTYLE = 'SET_PLAYSTYLE' // 播放页面样式
+
+export const SET_LISTDATA = 'SET_LISTDATA' // 列表页面数据
+
+export const SET_NEWMUSICS = 'SET_NEWMUSICS' // 新歌速递
+
+export const SET_SHEETS = 'SET_SHEETS' // 歌单

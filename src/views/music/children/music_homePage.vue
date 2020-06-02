@@ -2,7 +2,7 @@
 	<div class="sheet_page">
 		<div class="page_content">
 			<div class="item_dev">
-				<div class="item_title">
+				<div class="item_title" @click="toSheetList()">
 					<div>推荐歌单</div>
 					<van-icon name="arrow" />
 				</div>
@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="item_dev">
-				<div class="item_title">
+				<div class="item_title" @click="toMusicList">
 					<div>新歌速递</div>
 					<van-icon name="arrow" />
 				</div>
@@ -42,21 +42,35 @@ export default {
 
 	data () {
 		return {
-			sheetList: [],
-			musicList: []
+		}
+	},
+	
+	computed: {
+		...mapGetters([ 'newMusics', 'sheets' ]),
+		
+		musicList () {
+			return this.newMusics.length > 5 ? this.newMusics.slice(0, 5) : this.newMusics
+		},
+		
+		sheetList () {
+			return this.sheets.length > 6 ? this.sheets.slice(0, 6) : this.sheets
 		}
 	},
 
 	mounted () {
-		this.getSheetType()
-		this.getNewMusic()
+		if (this.newMusics.length == 0) {
+			this.getNewMusic()
+		}
+		if (this.sheets.length == 0) {
+			this.getSheetType()
+		}
 	},
 
 	methods: {
 		async getSheetType () { // 推荐歌单
-			await this.$get(this.$api.sheet_advise, { limit: 6 }).then(async data => {
+			await this.$get(this.$api.sheet_advise, { limit: 100 }).then(async data => {
 				if (data.body.code == 200) {
-					this.sheetList = data.body.result
+					this.setSheets(data.body.result)
 				}
 	    })
 		},
@@ -64,7 +78,9 @@ export default {
 		async getNewMusic () { // 新歌速递
 			await this.$get(this.$api.music_new).then(async data => {
 				if (data.body.code == 200) {
-					this.musicList = await this._formatSongs(data.body.data.slice(0, 5)) // 设置播放列表
+					let musicListAll = await this._formatSongs(data.body.data)
+					this.setListData(musicListAll)
+					this.setNewMusics(musicListAll)
 				}
 	    })
 		},
@@ -80,7 +96,7 @@ export default {
       return ret
     },
 
-    async toRank (item) {
+    async toRank (item) { // 歌单详情
 			this.$router.push({
 				path: '/music/rank/detail',
 				query: {
@@ -88,7 +104,25 @@ export default {
 					type: 2
 				}
 			})
-		}
+		},
+		
+		toMusicList () {
+			this.$router.push({
+				path: '/music/list'
+			})
+		},
+		
+		toSheetList () {
+			this.$router.push({
+				path: '/music/sheet'
+			})
+		},
+		
+		...mapMutations({
+      setListData: 'SET_LISTDATA',
+      setNewMusics: 'SET_NEWMUSICS',
+      setSheets: 'SET_SHEETS',
+    })
 	}
 }
 </script>

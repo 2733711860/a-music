@@ -84,6 +84,21 @@ const mutations = {
   // 播放页面样式
   [types.SET_PLAYSTYLE](state, playStyle) {
     state.playStyle = playStyle
+  },
+  
+  // 列表页面数据
+  [types.SET_LISTDATA](state, listData) {
+    state.listData = listData
+  },
+  
+  // 新歌速递
+  [types.SET_NEWMUSICS](state, newMusics) {
+    state.newMusics = newMusics
+  },
+  
+  // 歌单
+  [types.SET_SHEETS](state, sheets) {
+    state.sheets = sheets
   }
 }
 

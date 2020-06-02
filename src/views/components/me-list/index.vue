@@ -1,8 +1,8 @@
 <template>
 	<div class="music_list">
-		<van-cell v-for="(item, index) in musicList" :key="index" @click="playThis(item, index)" center title-class="vanCell">
+		<van-cell v-for="(item, index) in musicList" :key="index" center title-class="vanCell">
 		  <template #title>
-		  	<div class="item_left">
+		  	<div class="item_left" @click="playThis(item, index)">
 		  		<div class="item_left_left">{{index + 1}}</div>
 		  		<div class="item_left_right">
 		  			<div>{{item.name}}</div>
@@ -45,7 +45,7 @@ export default {
 
 	methods: {
 		async playThis(music, index) { // 选择播放
-			if (this.$route.path == "/music/list") { // 正在播放列表页面，不需要重置
+			if (this.$route.path == "/music/list/lisy") { // 正在播放列表页面，不需要重置
         // 正在播放列表页面
         if (music.id !== this.currentMusic.id) {
           this.setCurrentIndex(index)

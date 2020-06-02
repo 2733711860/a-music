@@ -15,7 +15,10 @@ const state = {
   volume: 0.5, // 音量
   lastVolumn: 0, // 静音前音量
   isMute: false, // 是否静音
-  playStyle: 0 // 0:播放器，1:歌词
+  playStyle: 0, // 0:播放器，1:歌词
+  listData: [], // 列表页面数据
+  newMusics: [], // 新歌速递
+  sheets: [], // 歌单
 }
 
 export default state
