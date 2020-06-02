@@ -54,7 +54,8 @@ export default {
 			this.$router.push({
 				path: '/music/rank/detail',
 				query: {
-					id: item.id
+					id: item.id,
+					type: 1
 				}
 			})
 		}

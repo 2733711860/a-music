@@ -25,6 +25,8 @@ export { baseUrl }
 export default {
   music_lyric: baseUrl + '/music/lyric',
   top_list: baseUrl + '/top/list',
+  sheet_cateList: baseUrl + '/sheet/cateList', // 歌单分类
+  sheet_hot_cateList: baseUrl + '/sheet/hot/cateList', // 热门歌单分类
   sheet_detail: baseUrl + '/sheet/detail',
   sheet_advise: baseUrl + '/sheet/advise', // 推荐歌单
   sheet_user: baseUrl + '/sheet/user', // 用户歌单
@@ -40,4 +42,6 @@ export default {
   rank_allRank: baseUrl + '/rank/allRank', // 获取榜单列表
   rank_detail: baseUrl + '/rank/detail', // 获取榜单列表
   rank_topList: baseUrl + '/rank/topList', // 获取榜单详情
+  music_new: baseUrl + '/music/new', // 新歌速递
+  singer_hot: baseUrl + '/singer/hot', // 热门歌手
 }

@@ -6,8 +6,20 @@ export default [
   {
     path: '/music',
     component: resolve => { require(['@/views/music/music.vue'], resolve) },
-    redirect: '/music/list',
+    redirect: '/music/homePage',
     children: [
+    	{
+	      path: '/music/homePage',
+	      name: 'music/homePage',
+	      component: resolve => {
+		      require(['@/views/music/children/music_homePage.vue'], resolve)
+		    },
+		    meta: {
+		    	title: '首页',
+		    	aniName: 'move-fade-top-to-bottom',
+		    	showTop: true
+		    }
+	    },
 	    {
 	      path: '/music/list',
 	      name: 'music/list',

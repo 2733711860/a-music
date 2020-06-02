@@ -20,6 +20,9 @@
 			<me-list :musicList="musicList" class="music_list"></me-list>
 		</div>
 
+		<!--底部-->
+		<me-footer-two></me-footer-two>
+
 		<!--背景设置-->
 		<div class="dd_bg_pic" :style="{ backgroundImage: picUrl }"></div>
     <div class="dd_bg_mask"></div>
@@ -30,9 +33,10 @@
 import { dateFormatFun } from '@/utils/commonFunction.js'
 import { createTopList } from '@/utils/song'
 import meList from '../../components/me-list'
+import meFooterTwo from '../../components/me-footer-two'
 export default {
 	components:{
-		meList
+		meList, meFooterTwo
 	},
 
 	data () {
@@ -56,13 +60,27 @@ export default {
 	},
 
 	mounted () {
-		this.getRankDetail()
+		if (this.$route.query.type == 1) { // 排行
+			this.getRankDetail()
+		} else if (this.$route.query.type == 2) { // 歌单
+			this.getSheetDetail()
+		}
 	},
 
 	methods: {
 		async getRankDetail () {
 			let param = { idx: this.$route.query.id }
 			await this.$get(this.$api.rank_topList, param).then(async data => {
+				if (data.body.code == 200) {
+					this.rankDetail = data.body.playlist
+					this.musicList = await this._formatSongs(data.body.playlist.tracks) // 设置播放列表
+				}
+	    })
+		},
+
+		async getSheetDetail () { // 歌单详情没登陆只能获取部分，登陆获取全部
+			let param = { id: this.$route.query.id }
+			await this.$get(this.$api.sheet_detail, param).then(async data => {
 				if (data.body.code == 200) {
 					this.rankDetail = data.body.playlist
 					this.musicList = await this._formatSongs(data.body.playlist.tracks) // 设置播放列表
@@ -92,6 +110,7 @@ export default {
 .rank_detail_page{
 	display: flex;
 	flex-flow: column;
+	justify-content: space-between;
 	.me_top{
 		height: 40px;
 		padding: 0 10px;

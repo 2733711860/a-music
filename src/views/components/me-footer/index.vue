@@ -2,7 +2,7 @@
   <div class="me_footr">
   	<ul class="footer flex jc-sa w100pc bott0 aic footer">
 	    <li class="item">
-	      <router-link to="/music/list" class="flex2 aic f20 yellow" active-class="active">
+	      <router-link to="/music/homePage" class="flex2 aic f20 yellow" active-class="active">
 	        <i class="icon-home iconfont f18 text"></i>
 	        <p class="mt-5 f12 text">首页</p>
 	      </router-link>

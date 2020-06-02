@@ -92,4 +92,28 @@ export function createLikeList(music) {
   })
 }
 
+export const formatNewSongs = function formatNewSongs(list) {
+  let Songs = []
+  list.forEach(item => {
+    const musicData = item
+    if (musicData.id) {
+      Songs.push(createNewSong(musicData))
+    }
+  })
+  return Songs
+}
+
+export function createNewSong(music) {
+  return new Song({
+    id: music.id,
+    name: music.name,
+    singer: music.artists.length > 0 && filterSinger(music.artists),
+    album: music.album.name,
+    image: music.album.picUrl,
+    duration: music.duration / 1000,
+    url: `https://music.163.com/song/media/outer/url?id=${music.id}.mp3`,
+    like: music.like || false
+  })
+}
+
 export default formatSongs

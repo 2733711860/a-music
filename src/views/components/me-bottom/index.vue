@@ -14,7 +14,7 @@
 			</div>
 			<div class="bottom_button">
 				<span class="icon iconfont fosz" @click="pre()">&#xe603;</span>
-				<span class="icon iconfont foszz" @click="play">{{ playing ? '&#xe643;' : '&#xe609;'}}</span>
+				<span class="icon iconfont foszz" @click="play">{{ playing ? '&#xe61d;' : '&#xe61c;'}}</span>
 				<span class="icon iconfont fosz" @click="next()">&#xe602;</span>
 			</div>
 			<div>
@@ -27,20 +27,21 @@
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { silencePromise } from '@/utils/util'
 import meMore from '../me-more'
 export default {
 	components: {
 		meMore
 	},
-	
+
 	data () {
 		return {
 			modeShow: false
 		}
 	},
-	
+
 	computed: {
-		...mapGetters([ 'playing', 'currentMusic', 'playlist', 'currentIndex', 'mode' ])
+		...mapGetters([ 'playing', 'currentMusic', 'playlist', 'currentIndex', 'mode', 'audioEle' ])
 	},
 
 	methods: {
@@ -50,7 +51,7 @@ export default {
   		}
 			this.setPlaying(!this.playing)
 		},
-		
+
 		pre() { // 上一首
   		if (this.currentMusic.id == undefined) {
   			return
@@ -68,7 +69,7 @@ export default {
         this.setCurrentIndex(index)
   		}
   	},
-  	
+
   	next() { // 下一首
   		if (this.currentMusic.id == undefined) {
   			return
@@ -91,12 +92,18 @@ export default {
         this.setCurrentIndex(index)
       }
   	},
-  	
+
+  	loop() { // 循环
+      this.audioEle.currentTime = 0
+      silencePromise(this.audioEle.play())
+      this.setPlaying(true)
+    },
+
   	chooseMode (mode) { // 选择模式
   		this.setMode(mode)
   		this.modeShow = false
   	},
-  	
+
   	showMore () { // 音量弹出
   		this.$refs.moreFunc.showMoreF()
   	},
@@ -105,7 +112,7 @@ export default {
 			setCurrentIndex: 'SET_CURRENTINDEX',
       setPlaying: 'SET_PLAYING'
     }),
-    
+
     ...mapActions(['setMode'])
 	}
 }

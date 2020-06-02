@@ -12,25 +12,28 @@
     	</me-progress>
     </router-link>
   	<div class="me_footer_desc">
-  		<div class="music_name">点歌的人</div>
-  		<div class="music_user">海来阿木</div>
+  		<div class="music_name">{{currentMusic.name}}</div>
+  		<div class="music_user">{{currentMusic.singer}}</div>
   	</div>
-  	<div class="me_footer_icon">
-  		<span class="iconfont icon2"></span>
+  	<div class="me_footer_icon" :class="{ disable: !currentMusic.id }">
+  		<span class="iconfont iconsize" @click="play">{{playing ? '&#xe87a;' : '&#xe87c;'}}</span>
+  		<span class="iconfont iconsize" @click="next()">&#xe602;</span>
+  		<span class="iconfont iconbofangliebiao iconsize"></span>
   	</div>
   </div>
 </template>
 
 <script>
 import meProgress from '../me-progress'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { silencePromise } from '@/utils/util'
 export default {
 	components: {
 		meProgress
 	},
 
 	computed: {
-		...mapGetters([ 'currentTime', 'currentMusic', 'playing']),
+		...mapGetters([ 'currentTime', 'currentMusic', 'playing', 'currentIndex', 'audioEle', 'mode', 'playlist']),
 
 		percent() { // 进度条进度百分比
       const duration = this.currentMusic.duration
@@ -42,6 +45,49 @@ export default {
       	? `${this.currentMusic.image}?param=300y300`
       	: require('../../../assets/image/bg.jpg')
     },
+	},
+
+	methods: {
+		play () { // 播放暂停
+			if (this.currentMusic.id == undefined) { //当前没有正在播放的音乐，底部按钮不可点击
+  			return
+  		}
+			this.setPlaying(!this.playing)
+		},
+
+		next() { // 下一首
+  		if (this.currentMusic.id == undefined) {
+  			return
+  		}
+  		if (this.playlist.length === 1) { // 播放列表只有一首歌曲，循环播放
+        this.loop()
+      } else {
+      	let index = ''
+      	if (this.mode === 'listLoop') { // 列表循环
+      		index = this.currentIndex + 1
+	        if (index === this.playlist.length) {
+	          index = 0
+	        }
+      	} else if (this.mode === 'random') { // 随机播放
+      		index = Math.floor(Math.random() * (this.playlist.length))
+      	}
+        if (!this.playing) { // 暂停状态
+          this.setPlaying(true)
+        }
+        this.setCurrentIndex(index)
+      }
+  	},
+
+  	loop() { // 循环
+      this.audioEle.currentTime = 0
+      silencePromise(this.audioEle.play())
+      this.setPlaying(true)
+    },
+
+		...mapMutations({
+			setCurrentIndex: 'SET_CURRENTINDEX',
+      setPlaying: 'SET_PLAYING'
+    })
 	}
 }
 </script>
@@ -54,6 +100,10 @@ export default {
 	align-items: center;
 	padding: 0 20px;
 	background-color: rgba(242, 243, 245, .1);
+	.disable{
+		pointer-events: none; /*阻止用户的点击动作产生任何效果*/
+    opacity: 0.6;
+	}
 	.me_footer_desc{
 		flex: 1;
 		padding: 0 20px;
@@ -63,6 +113,15 @@ export default {
 			font-size: 12px;
 			color: rgba(255, 255, 255, .6);
 			line-height: 18px;
+		}
+	}
+	.me_footer_icon{
+		display: flex;
+		justify-content: space-between;
+		width: 90px;
+		color: rgba(255, 255, 255, .9);
+		.iconsize{
+			font-size: 22px;
 		}
 	}
 }
