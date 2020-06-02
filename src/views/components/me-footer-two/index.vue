@@ -18,18 +18,21 @@
   	<div class="me_footer_icon" :class="{ disable: !currentMusic.id }">
   		<span class="iconfont iconsize" @click="play">{{playing ? '&#xe87a;' : '&#xe87c;'}}</span>
   		<span class="iconfont iconsize" @click="next()">&#xe602;</span>
-  		<span class="iconfont iconbofangliebiao iconsize"></span>
+  		<span class="iconfont iconbofangliebiao iconsize" @click="showPlayList"></span>
   	</div>
+
+  	<me-play-list ref="moreFunc"></me-play-list>
   </div>
 </template>
 
 <script>
 import meProgress from '../me-progress'
+import mePlayList from '../me-play-list'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { silencePromise } from '@/utils/util'
 export default {
 	components: {
-		meProgress
+		meProgress, mePlayList
 	},
 
 	computed: {
@@ -82,6 +85,10 @@ export default {
       this.audioEle.currentTime = 0
       silencePromise(this.audioEle.play())
       this.setPlaying(true)
+    },
+
+    showPlayList () { // 显示播放列表
+    	this.$refs.moreFunc.showMoreF()
     },
 
 		...mapMutations({
