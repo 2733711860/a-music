@@ -4,10 +4,10 @@ export default {
    */
   title: 'demo',
 
-  baseUrl: {  //  吉意保的请求路径
+  baseUrl: {  //
 //		dev: 'http://localhost:3001/api',
     dev: 'http://121.41.79.10',
-    tes: 'http://localhost:3001',
-    pro: 'https://tjxw.jxlife.com.cn/com.ifp.ipartner/' // 'https://weixin.jxlife.com.cn/jiyibaojr/com.ifp.ipartner/'
+    tes: 'http://121.41.79.10',
+    pro: 'http://121.41.79.10'
   }
 }

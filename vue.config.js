@@ -5,6 +5,7 @@ const themePath = path.resolve(__dirname,'src/assets/style/theme.less');
 const webpack = require('webpack');
 
 module.exports = {
+	publicPath: './',
   // 关闭eslint检查
   lintOnSave: false,
   devServer: {
