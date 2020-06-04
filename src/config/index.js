@@ -6,7 +6,8 @@ export default {
 
   baseUrl: {  //
 //		dev: 'http://localhost:3001/api',
-    dev: 'http://121.41.79.10',
+//  dev: 'http://121.41.79.10',
+    dev: 'https://api.mtnhao.com',
     tes: 'http://121.41.79.10',
     pro: 'http://121.41.79.10'
   }

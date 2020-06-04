@@ -20,7 +20,8 @@ import {
   ActionSheet,
   Slider,
   Search,
-  Tag
+  Tag,
+  Lazyload
 } from "vant";
 
 Vue.use(Icon);
@@ -44,3 +45,4 @@ Vue.use(ActionSheet);
 Vue.use(Slider);
 Vue.use(Search);
 Vue.use(Tag);
+Vue.use(Lazyload);

@@ -20,7 +20,7 @@ export default {
     this.$nextTick(() => {
     	this.setAudioele(this.$refs.ddPlayer) // 设置audio元素
     })
-    this.getSongList()
+//  this.getSongList()
   },
 
   methods: {

@@ -44,4 +44,9 @@ export default {
   rank_topList: baseUrl + '/rank/topList', // 获取榜单详情
   music_new: baseUrl + '/music/new', // 新歌速递
   singer_hot: baseUrl + '/singer/hot', // 热门歌手
+  
+  
+  getBanner: baseUrl + '/banner', // 轮播图
+  getPersonalized: baseUrl + '/personalized', // 推荐歌单
+  getNewSongs: baseUrl + '/personalized/newsong', // 推荐新音乐
 }

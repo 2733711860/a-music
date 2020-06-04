@@ -1,4 +1,4 @@
-.van-cell{
+/*.van-cell{
 	background-color: rgba(0, 0, 0, 0) !important;
 	padding: 8px 12px !important;
 }
@@ -10,8 +10,8 @@
 	margin-top: 0 !important;
 }
 .van-cell.van-cell--center .van-icon{
-	color: rgba(255, 255, 255, 0.9) !important;
+	color: rgba(255, 255, 255, 0.9);
 }
 .more_div .more_list .van-cell:not(:last-child)::after {
 	border-bottom: 1px solid #e5e5e5 !important;
-}
+}*/
