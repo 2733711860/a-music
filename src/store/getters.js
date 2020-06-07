@@ -11,9 +11,11 @@ export const playlist = state => state.playlist
 export const currentIndex = state => state.currentIndex
 
 // 当前音乐
-export const currentMusic = state => {
-  return state.playlist[state.currentIndex] || {}
-}
+//export const currentMusic = state => {
+//return state.playlist[state.currentIndex] || {}
+//}
+
+export const currentMusic = state => state.currentMusic
 
 // 当前播放时间
 export const currentTime = state => state.currentTime

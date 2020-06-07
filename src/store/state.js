@@ -5,6 +5,7 @@ const state = {
 	currentIndex: -1, // 当前播放音乐索引
 	currentTime: 0, // 当前播放时间
 	currentLyric: {}, // 当前歌词对象
+	currentMusic: {}, // 当前音乐
 	playing: false, // 播放状态
 	currentProgress: 0, // 当前缓存进度
 	mode: 'listLoop', // 播放模式，默认顺序播放。listLoop：顺序播放；loop：单曲循环；random：随机播放。

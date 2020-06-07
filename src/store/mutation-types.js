@@ -8,6 +8,8 @@ export const SET_CURRENTINDEX = 'SET_CURRENTINDEX' // 当前播放音乐索引
 
 export const SET_CURRENTTIME = 'SET_CURRENTTIME' // 当前播放时间
 
+export const SET_CURRENTMUSIC = 'SET_CURRENTMUSIC' // 当前音乐
+
 export const SET_CURRENTLYRIC = 'SET_CURRENTLYRIC' // 当前歌词对象
 
 export const SET_PLAYING = 'SET_PLAYING' // 播放状态

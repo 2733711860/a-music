@@ -1,7 +1,7 @@
 <template>
 	<div class="list_page">
 		<div class="me_top">
-			<van-icon name="arrow-left" @click="goback" />
+			<span class="icon iconfont foszzx">&#xe635;</span>
 			<div>推荐</div>
 			<van-icon name="search" />
 		</div>
@@ -23,7 +23,7 @@
 			</div>
 			
 			<div class="item_dev">
-				<div class="item_title" @click="toSheetList()">
+				<div class="item_title" @click="toMusicList()">
 					<div>新歌速递</div>
 					<div class="more_btn">
 						更多歌曲<van-icon name="arrow" />
@@ -44,6 +44,7 @@ import { mapGetters, mapMutations, mapActions } from 'vuex'
 import meList from '../components/me-list'
 import meFooter from '../components/me-footer'
 import meSongSheet from '../components/me-song-sheet'
+import { createPlayList } from '@/utils'
 export default {
 	components:{
 		meList, meFooter, meSongSheet
@@ -68,7 +69,7 @@ export default {
 	},
 	
 	methods: {
-		async getBanner () {
+		async getBanner () { // 轮播数据
 			var u = navigator.userAgent, app = navigator.appVersion
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1
 			
@@ -77,20 +78,42 @@ export default {
 	    })
 		},
 		
-		async getPersonalized () {
+		async getPersonalized () { // 歌单推荐
 			await this.$get(this.$api.getPersonalized, { limit: 6 }).then(async data => {
 				this.sheetList = data.result
 	    })
 		},
 		
-		async getNewSongs () {
-			await this.$get(this.$api.getNewSongs, { limit: 6 }).then(async data => {
-				this.musicList = data.result
+		async getNewSongs () { // 新歌推荐
+			await this.$get(this.$api.getNewSongs).then(async data => {
+				this.musicList = await this._formatSongs(data.result)
 	    })
 		},
 		
-		goback () {
-			history.go(-1)
+		_formatSongs(list) { // 歌曲数据处理
+      let ret = []
+      list.forEach(item => {
+        const musicData = item
+        if (musicData.id) {
+          ret.push(createPlayList(musicData.song))
+        }
+      })
+      return ret
+    },
+		
+		toSheetList () {
+			this.$router.push({
+				path: '/sheet'
+			})
+		},
+		
+		toMusicList () {
+			this.$router.push({
+				path: '/list',
+				query: {
+					type: '1' // 1代表音乐列表，不是歌单音乐列表
+				}
+			})
 		}
 	}
 }

@@ -2,19 +2,19 @@
   <div class="me_footr">
   	<ul class="footer flex jc-sa w100pc bott0 aic footer">
 	    <li class="item">
-	      <router-link to="/music/homePage" class="flex2 aic f20 yellow" active-class="active">
+	      <router-link to="/homePage" class="flex2 aic f20 yellow" active-class="active">
 	        <i class="icon-home iconfont f18 text"></i>
 	        <p class="mt-5 f12 text">首页</p>
 	      </router-link>
 	    </li>
 	    <li class="item">
-	      <router-link to="/music/rank" class="flex2 aic f20 text" active-class="active">
+	      <router-link to="/rank" class="flex2 aic f20 text" active-class="active">
 	        <van-icon class="text" name="service-o"></van-icon>
 	        <p class="mt-5 text f12">排行</p>
 	      </router-link>
 	    </li>
 	    <li class="item">
-	      <router-link to="/music/lyric" class="flex2 aic f20 text" active-class="active">
+	      <router-link to="/lyric" class="flex2 aic f20 text" active-class="active">
 	      	<me-progress
 		    		:percentage="percent"
 		    		:strokeWidth="3"
@@ -27,7 +27,7 @@
 	      </router-link>
 	    </li>
 	    <li class="item">
-	      <router-link to="/music/search" class="flex2 aic f20 text" active-class="active">
+	      <router-link to="/search" class="flex2 aic f20 text" active-class="active">
 	        <van-icon class="text" name="search"></van-icon>
 	        <p class="mt-5 text f12">搜索</p>
 	      </router-link>
@@ -61,7 +61,7 @@ export default {
     picUrl() {
       return this.currentMusic.id && this.currentMusic.image
       	? `${this.currentMusic.image}?param=300y300`
-      	: require('../../../assets/image/bg.jpg')
+      	: require('@/assets/image/bg.jpg')
     },
 	}
 }

@@ -41,7 +41,7 @@
   display: block;
   height: 100%;
   width: 2.5px;
-  background: rgba(255,255,255,0.8);
+  background: rgb(25, 137, 250);
 }
 
  #waves .li1 span {

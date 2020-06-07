@@ -1,26 +1,26 @@
 <template>
-	<div class="music_list">
-		<van-cell v-for="(item, index) in musicList" :key="index" center title-class="vanCell" :style="{backgroundColor: (currentMusic.id == item.id ? '#ededed' : '')}">
-		  <template #title>
-		  	<div class="item_left" @click="playThis(item, index)">
-		  		<div class="sort_in">
-		  			<me-loading class="musicLoading" v-if="currentMusic.id == item.id"></me-loading>
-		  			<div v-else>{{index + 1}}</div>
-		  		</div>
-		  		<div class="item_left_left">
-		  			<img v-lazy="item.image" />
-		  		</div>
-		  		<div class="item_left_right">
-		  			<div :style="{color: (currentMusic.id == item.id ? 'rgb(25, 137, 250)' : '')}">{{item.name}}</div>
-		  			<div class="item_left_right_desc">{{item.singer}}</div>
-		  		</div>
-		  	</div>
-		  </template>
-
-		  <template #right-icon>
-		    <van-icon name="ellipsis" class="icon" />
-		  </template>
-		</van-cell>
+	<div class="music_list_two">
+		<div class="music_list_all">
+			<van-cell v-for="(item, index) in musicList" :key="index" center title-class="vanCell" :style="{backgroundColor: (currentMusic.id == item.id ? '#ededed' : '')}">
+			  <template #title>
+			  	<div class="item_left" @click="playThis(item, index)">
+			  		<div class="sort_in">
+			  			<img v-lazy="item.image" v-if="currentMusic.id == item.id" />
+			  			<div v-else>{{index + 1}}</div>
+			  		</div>
+			  		<div class="item_left_right">
+			  			<div :style="{color: (currentMusic.id == item.id ? 'rgb(25, 137, 250)' : '')}">{{item.name}}</div>
+			  			<div class="item_left_right_desc">{{item.singer}}</div>
+			  		</div>
+			  	</div>
+			  </template>
+	
+			  <template #right-icon>
+			    <span class="icon iconfont foszzx" v-if="currentMusic.id == item.id">&#xe870;</span>
+			    <span class="icon iconfont foszzx">&#xe852;</span>
+			  </template>
+			</van-cell>
+		</div>
 	</div>
 </template>
 
@@ -91,11 +91,9 @@ export default {
 		width: 30px;
 		display: flex;
 		justify-content: center;
-	}
-	.item_left_left{
 		img{
-			width: 50px;
-			border-radius: 5px;
+			width: 30px;
+			border-radius: 50%;
 		}
 	}
 }
@@ -105,21 +103,32 @@ export default {
 	margin-left: 15px;
 	.item_left_right_desc{
 		font-size: 12px;
+		line-height: 20px;
 		color: rgba(0, 0, 0, .6);
+	}
+}
+.music_list_all{
+	.foszzx{
+		margin: 0 5px 0 10px;
 	}
 }
 </style>
 
 <style>
 .van-cell.van-cell--center .icon.van-icon{
-	color: rgba(0, 0, 0, .8);
+	color: rgba(0, 0, 0, .6);
 }
-.music_list .van-cell{
+.music_list_two .van-cell{
 	font-size: 13px;
-	padding: 8px 10px;
+	padding: 2px 10px;
 }
-.music_list .van-cell .vanCell{
+.music_list_two .van-cell .vanCell{
 	padding: 0 10px 0 0;
+}
+.item_left_two.van-cell{
+	display: flex;
+	align-items: center;
+	padding: 10px;
 }
 </style>
 

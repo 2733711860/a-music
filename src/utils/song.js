@@ -7,7 +7,7 @@ export function filterSinger(singers) {
 }
 
 export class Song {
-  constructor({ id, name, singer, album, image, duration, url, like }) {
+  constructor({ id, name, singer, album, image, duration, url, like, isSearch, albumId }) {
     this.id = id
     this.name = name
     this.singer = singer
@@ -16,6 +16,8 @@ export class Song {
     this.duration = duration
     this.url = url
     this.like = like
+    this.isSearch = isSearch
+    this.albumId = albumId
   }
 }
 
@@ -25,10 +27,12 @@ export function createPlayList(music) {
     name: music.name,
     singer: music.artists.length > 0 && filterSinger(music.artists),
     album: music.album.name,
+    albumId: music.album.id, 
     image: music.album.picUrl || null,
     duration: music.duration / 1000,
     url: `https://music.163.com/song/media/outer/url?id=${music.id}.mp3`,
-    like: music.like || false
+    like: music.like || false,
+    isSearch: false
   })
 }
 
@@ -41,7 +45,8 @@ export function createTopList(music) {
     image: music.al.picUrl,
     duration: music.dt / 1000,
     url: `https://music.163.com/song/media/outer/url?id=${music.id}.mp3`,
-    like: music.like || false
+    like: music.like || false,
+    isSearch: false
   })
 }
 
@@ -88,7 +93,8 @@ export function createLikeList(music) {
     image: music.image || null,
     duration: Number(music.duration),
     url: `https://music.163.com/song/media/outer/url?id=${music.id}.mp3`,
-    like: music.like || false
+    like: music.like || false,
+    isSearch: false
   })
 }
 
@@ -109,10 +115,12 @@ export function createNewSong(music) {
     name: music.name,
     singer: music.artists.length > 0 && filterSinger(music.artists),
     album: music.album.name,
+    albumId: music.album.id, 
     image: music.album.picUrl,
     duration: music.duration / 1000,
     url: `https://music.163.com/song/media/outer/url?id=${music.id}.mp3`,
-    like: music.like || false
+    like: music.like || false,
+    isSearch: true
   })
 }
 

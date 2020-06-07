@@ -30,6 +30,11 @@ const mutations = {
   [types.SET_CURRENTLYRIC](state, currentLyric) {
     state.currentLyric = currentLyric
   },
+  
+  // 当前音乐
+  [types.SET_CURRENTMUSIC](state, currentMusic) {
+    state.currentMusic = currentMusic
+  },
 
   // 播放状态
   [types.SET_PLAYING](state, playing) {
