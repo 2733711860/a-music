@@ -1,8 +1,10 @@
 <template>
   <div class="app">
-    <transition :name="$route.meta.aniName">
-      <router-view class="app-router-view"></router-view>
-    </transition>
+  	<navigation>
+	    <transition :name="$route.meta.aniName">
+	      <router-view class="app-router-view"></router-view>
+	    </transition>
+    </navigation>
 
     <!--播放器-->
   	<audio ref="ddPlayer"></audio>

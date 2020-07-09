@@ -1,9 +1,5 @@
 export default [
   {
-    path: '/',
-    redirect: '/music'
-  },
-  {
     path: '/music',
     component: resolve => { require(['@/views/music/music.vue'], resolve) },
     redirect: '/music/homePage',

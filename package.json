@@ -15,10 +15,9 @@
     "babel-plugin-import": "^1.12.2",
     "core-js": "^2.6.5",
     "css-loader": "^3.2.0",
-    "echarts": "^4.2.1",
-    "jquery": "^3.5.1",
     "style-loader": "^1.0.0",
     "vue": "^2.6.10",
+    "vue-navigation": "^1.1.4",
     "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {

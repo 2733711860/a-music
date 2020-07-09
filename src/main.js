@@ -2,9 +2,10 @@ import Vue from "vue";
 // import "vant/lib/index.css";
 import App from "./App.vue";
 import router from "./router/index";
+import Navigation from 'vue-navigation'
+Vue.use(Navigation, {router})
 import "@/assets/style/index.less";
 import mixin from "./mixin/index";
-import $ from 'jquery';
 
 import "@/components/Vant";
 // rem

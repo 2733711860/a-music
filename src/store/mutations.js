@@ -104,7 +104,7 @@ const mutations = {
   // 歌单
   [types.SET_SHEETS](state, sheets) {
     state.sheets = sheets
-  }
+  },
 }
 
 export default mutations

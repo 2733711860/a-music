@@ -9,7 +9,7 @@
 		<div class="rankList">
 			<div class="rank_top" v-if="this.$route.query.type != '1'">
 				<div class="rank_top_top">
-					<img v-lazy="playlist.coverImgUrl" />
+					<img :src="playlist.coverImgUrl" />
 					<div class="rank_msg">
 						<div class="rank_name">{{playlist.name}}</div>
 						<div class="rank_time">最近更新：{{ playlist.updateTime | dateFormatFun }}</div>

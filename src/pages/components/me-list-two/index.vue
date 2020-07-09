@@ -23,7 +23,7 @@
 			  <template #title>
 			  	<div class="item_left" @click="playThis(item, index)">
 			  		<div class="sort_in">
-			  			<img v-lazy="item.image" v-if="currentMusic.id == item.id" />
+			  			<img :src="item.image" v-if="currentMusic.id == item.id" />
 			  			<div v-else>{{index + 1}}</div>
 			  		</div>
 			  		<div class="item_left_right">

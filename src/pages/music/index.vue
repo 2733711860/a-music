@@ -9,7 +9,7 @@
 		<div class="page_content">
 			<van-swipe class="my-swipe" :autoplay="10000" :width="375" indicator-color="white">
 			  <van-swipe-item v-for="(item, index) in banners" :key="index">
-			  	<img v-lazy="item.pic" class="banner_img" />
+			  	<img :src="item.pic" class="banner_img" />
 			  </van-swipe-item>
 			</van-swipe>
 			<div class="item_dev">

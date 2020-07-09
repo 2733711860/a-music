@@ -8,7 +8,7 @@
 		  			<div v-else>{{index + 1}}</div>
 		  		</div>
 		  		<div class="item_left_left">
-		  			<img v-lazy="item.image" />
+		  			<img :src="item.image" />
 		  		</div>
 		  		<div class="item_left_right">
 		  			<div :style="{color: (currentMusic.id == item.id ? 'rgb(25, 137, 250)' : '')}">{{item.name}}</div>

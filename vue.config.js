@@ -60,6 +60,7 @@ module.exports = {
 
   configureWebpack: {
     externals: {
+    	'jquery' : '$',
       axios: "axios" // 配置使用CDN
     },
     plugins: [

@@ -1,12 +1,12 @@
 export default [
   {
     path: '/',
-    redirect: '/music'
+    redirect: '/homePage'
   },
-  {
-    path: "*",
-    component: () => import("@/pages/music/NotFound")
-  },
+//{
+//  path: "*",
+//  component: () => import("@/pages/music/NotFound")
+//},
   {
     path: '/homePage',
     name: 'homePage',
